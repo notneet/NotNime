@@ -1,7 +1,5 @@
 "use client";
 
-import { Input } from "@nextui-org/input";
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import {
   NavbarBrand,
@@ -19,14 +17,35 @@ import { siteConfig } from "@/config/site";
 import clsx from "clsx";
 import NextLink from "next/link";
 
-import { GithubIcon, SearchIcon, TwitterIcon } from "@/components/icons";
+import { GithubIcon, NewLogo, TwitterIcon } from "@/components/icons";
 import { ThemeSwitch } from "@/components/theme-switch";
 
-import { Logo } from "@/components/icons";
+import { setMedia } from "@/redux/worker/media.worker";
+import { MediaService } from "@/services/media";
+import { MediaDummyData } from "@/types/dummy/media";
+import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
 import { MonitorMobileIcon } from "@nextui-org/shared-icons";
-import { ChangeEvent, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Key, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export const Navbar = () => {
+  const dispatch = useDispatch();
+  // const count = useSelector(selectData);
+
+  const {
+    data: medias,
+    error,
+    isError,
+    isPending,
+  } = useQuery({
+    queryKey: ["medias"],
+    queryFn: MediaService.getAll,
+    retry: 1,
+    select: ({ data }) => data,
+    initialData: MediaDummyData.findAll,
+  });
+
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.ctrlKey && event.key === "k") {
@@ -49,32 +68,25 @@ export const Navbar = () => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [dispatch]);
 
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
+  const handleChangeMedia = (key: Key) => {
+    dispatch(setMedia(+key.toString()));
   };
 
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["ctrl"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      type="search"
-      onChange={handleSearch}
-    />
+  const inputMediaIdComp = (
+    <Autocomplete
+      label="Source Media"
+      placeholder="Search an media"
+      // className="max-w-xs"
+      clearIcon={<></>}
+      defaultInputValue={medias[0].name}
+      onSelectionChange={handleChangeMedia}
+    >
+      {medias?.map((media) => (
+        <AutocompleteItem key={media.id}>{media.name}</AutocompleteItem>
+      ))}
+    </Autocomplete>
   );
 
   return (
@@ -82,7 +94,7 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
+            <NewLogo />
             <p className="font-bold text-inherit">ACME</p>
           </NextLink>
         </NavbarBrand>
@@ -123,7 +135,7 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        <NavbarItem className="hidden lg:flex">{inputMediaIdComp}</NavbarItem>
         {/* <NavbarItem className="hidden md:flex">
           <Button
             isExternal
@@ -147,7 +159,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
+        {inputMediaIdComp}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>

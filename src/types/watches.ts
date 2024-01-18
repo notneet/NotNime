@@ -26,3 +26,7 @@ export interface IWatches {
   data: WatchesData[];
   meta: IPagition;
 }
+
+export interface IWatcheDetail {
+  data: WatchesData;
+}
