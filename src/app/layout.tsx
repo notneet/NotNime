@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/navbar";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
+import { ReduxProviders } from "@/redux/providers";
 import { Link } from "@nextui-org/link";
 import { QueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import "../styles/globals.css";
-import { Providers, QueryProviders } from "./providers";
+import { NextUIProviders, QueryProviders } from "./providers";
 
 export const metadata: Metadata = {
   title: {
@@ -37,27 +38,31 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <QueryProviders>
-            <div className="relative flex flex-col h-screen">
-              <Navbar />
-              <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-                {children}
-              </main>
-              <footer className="w-full flex items-center justify-center py-3">
-                <Link
-                  isExternal
-                  className="flex items-center gap-1 text-current"
-                  href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                  title="NextJS Homepage"
-                >
-                  <span className="text-default-600">Powered by</span>
-                  <p className="text-primary">NextJS</p>
-                </Link>
-              </footer>
-            </div>
-          </QueryProviders>
-        </Providers>
+        <NextUIProviders
+          themeProps={{ attribute: "class", defaultTheme: "dark" }}
+        >
+          <ReduxProviders>
+            <QueryProviders>
+              <div className="relative flex flex-col h-screen">
+                <Navbar />
+                <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+                  {children}
+                </main>
+                <footer className="w-full flex items-center justify-center py-3">
+                  <Link
+                    isExternal
+                    className="flex items-center gap-1 text-current"
+                    href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+                    title="NextJS Homepage"
+                  >
+                    <span className="text-default-600">Powered by</span>
+                    <p className="text-primary">NextJS</p>
+                  </Link>
+                </footer>
+              </div>
+            </QueryProviders>
+          </ReduxProviders>
+        </NextUIProviders>
       </body>
     </html>
   );

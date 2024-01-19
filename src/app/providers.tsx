@@ -12,7 +12,7 @@ export interface ProvidersProps {
   themeProps?: ThemeProviderProps;
 }
 
-export function Providers({ children, themeProps }: ProvidersProps) {
+export function NextUIProviders({ children, themeProps }: ProvidersProps) {
   const router = useRouter();
 
   return (
