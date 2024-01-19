@@ -31,7 +31,7 @@ export default function DetailAnimePage({
     <div className="flex flex-col md:flex-row items-center">
       <aside className="flex flex-col items-center w-3/5">
         <h1 className={title()}>{anime?.title_en}</h1>
-        <Image src={anime?.cover_url} className="py-4" />
+        <Image src={anime?.cover_url} className="py-4" alt={anime?.title_en} />
         <p>{anime?.description}</p>
       </aside>
       <aside className="w-2/5 sm:pt-2">
