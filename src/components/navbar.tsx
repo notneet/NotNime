@@ -24,6 +24,7 @@ import { selectData, setMedia } from "@/redux/worker/media.worker";
 import { MediaService } from "@/services/media";
 import { MediaDummyData } from "@/types/dummy/media";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
+import { Kbd } from "@nextui-org/kbd";
 import { MonitorMobileIcon } from "@nextui-org/shared-icons";
 import { useQuery } from "@tanstack/react-query";
 import { Key, useEffect } from "react";
@@ -52,7 +53,7 @@ export const Navbar = () => {
         event.preventDefault();
 
         const inputEl: HTMLInputElement | null = document.querySelector(
-          'input[aria-label="Search"]'
+          'input[aria-label="Source Media"]'
         );
 
         if (inputEl) {
@@ -76,12 +77,18 @@ export const Navbar = () => {
 
   const inputMediaIdComp = (
     <Autocomplete
+      aria-label="Source Media"
       label="Source Media"
       placeholder="Search an media"
       className="rounded-full"
       clearIcon={<></>}
       defaultInputValue={medias?.find((it) => it?.id === 1)?.name}
       onSelectionChange={handleChangeMedia}
+      endContent={
+        <Kbd className="hidden lg:inline-block" keys={["ctrl"]}>
+          K
+        </Kbd>
+      }
     >
       {medias?.map((media) => (
         <AutocompleteItem key={media.id}>{media.name}</AutocompleteItem>
@@ -95,7 +102,7 @@ export const Navbar = () => {
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <NewLogo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit">{siteConfig.name}</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">

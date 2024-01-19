@@ -17,24 +17,28 @@ const config: Config = {
       themes: {
         dark: {
           colors: {
+            background: "#272727",
+            foreground: "#747474",
+            focus: "#FF652F",
             primary: {
               DEFAULT: "#FF652F",
             },
             secondary: {
               DEFAULT: "#FFE400",
             },
-            // content1: {
-            //   DEFAULT: "#14A76C",
-            // },
-            background: "#272727",
-            foreground: "#747474",
-            focus: "#FF652F",
           },
         },
         light: {
           colors: {
             background: "#F5F5F5",
             foreground: "#333333",
+            focus: "#FF652F",
+            primary: {
+              DEFAULT: "#14A76C",
+            },
+            secondary: {
+              DEFAULT: "#6C5014",
+            },
           },
         },
       },

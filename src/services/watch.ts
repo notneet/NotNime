@@ -5,6 +5,9 @@ import { QueryOptions } from "@tanstack/react-query";
 export type PaginationItem = {
   media_id: number;
   page: number;
+  title: string;
+  searchBy: string;
+  search: string;
 };
 
 export namespace WatchService {
@@ -14,6 +17,9 @@ export namespace WatchService {
     const { data } = await apiClient.get<IWatches>("watches", {
       params: {
         media_id: searchItem?.media_id || 1,
+        title: searchItem?.title,
+        searchBy: searchItem?.searchBy,
+        search: searchItem?.search,
         page: searchItem?.page,
         take: 50,
       },
