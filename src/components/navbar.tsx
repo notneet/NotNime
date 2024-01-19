@@ -20,18 +20,18 @@ import NextLink from "next/link";
 import { GithubIcon, NewLogo, TwitterIcon } from "@/components/icons";
 import { ThemeSwitch } from "@/components/theme-switch";
 
-import { setMedia } from "@/redux/worker/media.worker";
+import { selectData, setMedia } from "@/redux/worker/media.worker";
 import { MediaService } from "@/services/media";
 import { MediaDummyData } from "@/types/dummy/media";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
 import { MonitorMobileIcon } from "@nextui-org/shared-icons";
 import { useQuery } from "@tanstack/react-query";
 import { Key, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Navbar = () => {
   const dispatch = useDispatch();
-  // const count = useSelector(selectData);
+  const count = useSelector(selectData);
 
   const {
     data: medias,
@@ -78,9 +78,9 @@ export const Navbar = () => {
     <Autocomplete
       label="Source Media"
       placeholder="Search an media"
-      // className="max-w-xs"
+      className="rounded-full"
       clearIcon={<></>}
-      defaultInputValue={medias[0].name}
+      defaultInputValue={medias?.find((it) => it?.id === 1)?.name}
       onSelectionChange={handleChangeMedia}
     >
       {medias?.map((media) => (
