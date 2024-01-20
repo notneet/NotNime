@@ -84,6 +84,7 @@ export const VideoControl: FC<VideoControlProps> = ({
 
   return (
     <div className={clsx(className)}>
+      {" "}
       <ReactPlayer
         ref={playerRef}
         width="640"
@@ -95,48 +96,57 @@ export const VideoControl: FC<VideoControlProps> = ({
         onReady={handleOnReady}
         onDuration={handleOnDuration}
       />
-      <div className="flex max-w-full gap-2 pt-2">
-        <Button onClick={handlePlayPause}>{playing ? "Pause" : "Play"}</Button>
-        <div className="flex flex-col gap-1 w-full">
-          <div className="relative max-w-full ">
-            <Slider
-              aria-label="Player progress"
-              color="foreground"
-              hideThumb={true}
-              onChange={sliderOnChange}
-              size="md"
-              step={1}
-              value={loadedTime}
-              maxValue={sliderMaxValue}
-              minValue={0}
-              showOutline={false}
-              defaultValue={1}
-              isDisabled={true}
-              className="max-w-full absolute opacity-50 z-0"
-            />
-            <Slider
-              aria-label="Player progress"
-              color="foreground"
-              hideThumb={true}
-              onChange={sliderOnChange}
-              size="md"
-              value={seekTime}
-              step={1}
-              maxValue={sliderMaxValue}
-              minValue={0}
-              showOutline={false}
-              className="max-w-full absolute z-10"
-            />
-          </div>
+      {sliderMaxValue && (
+        <div className="flex max-w-full gap-2 pt-2">
+          <Button onClick={handlePlayPause} isDisabled={sliderMaxValue < 1}>
+            {playing ? "Pause" : "Play"}
+          </Button>
+          <div className="flex flex-col gap-1 w-full">
+            <div className="relative max-w-full ">
+              <Slider
+                aria-label="Player progress"
+                color="foreground"
+                hideThumb={true}
+                onChange={sliderOnChange}
+                size="md"
+                step={1}
+                value={loadedTime}
+                maxValue={sliderMaxValue}
+                minValue={0}
+                showOutline={false}
+                defaultValue={1}
+                isDisabled={true}
+                className="max-w-full absolute opacity-50 z-0"
+              />
+              <Slider
+                aria-label="Player progress"
+                color="foreground"
+                hideThumb={true}
+                onChange={sliderOnChange}
+                size="md"
+                value={seekTime}
+                step={1}
+                maxValue={sliderMaxValue}
+                minValue={0}
+                showOutline={false}
+                isDisabled={sliderMaxValue < 1}
+                className="max-w-full absolute z-10"
+              />
+            </div>
 
-          <div className="flex justify-between pt-4">
-            <p className="text-small">{playedTimeText}</p>
-            <p className="text-small text-foreground/50">{totalTimeText}</p>
+            <div className="flex justify-between pt-4">
+              <p className="text-small">{playedTimeText}</p>
+              <p className="text-small text-foreground/50">{totalTimeText}</p>
+            </div>
           </div>
+          <Button onClick={handleSeekDec} isDisabled={sliderMaxValue < 1}>
+            Dec 5
+          </Button>
+          <Button onClick={handleSeekInc} isDisabled={sliderMaxValue < 1}>
+            Inc 5
+          </Button>
         </div>
-        <Button onClick={handleSeekDec}>Dec 5</Button>
-        <Button onClick={handleSeekInc}>Inc 5</Button>
-      </div>
+      )}
     </div>
   );
 };
