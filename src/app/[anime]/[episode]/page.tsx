@@ -30,10 +30,12 @@ export default function EpisodeAnimePage({
   return (
     <div>
       <h1 className={clsx(title())}>{anime?.title_en}</h1>
-      <VideoControl
-        className="relative py-5"
-        streamUrl={`${BASEURL_ASSET}/anime/video/otakudesu/Kono_Subarashii_Sekai_ni_Bakuen_wo_1.mkv.mp4`}
-      />
+      {anime?.object_id && (
+        <VideoControl
+          className="relative py-5"
+          streamUrl={`${BASEURL_ASSET}/anime/video/otakudesu/Kono_Subarashii_Sekai_ni_Bakuen_wo_1.mkv.mp4`}
+        />
+      )}
     </div>
   );
 }
