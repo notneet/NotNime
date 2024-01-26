@@ -1,6 +1,6 @@
 "use client";
 
-import { title } from "@/components/primitives";
+import { title } from "@/components/stateless/primitives";
 import { selectData } from "@/redux/worker/media.worker";
 import { WatchService } from "@/services/watch";
 import { Input } from "@nextui-org/input";

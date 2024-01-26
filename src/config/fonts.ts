@@ -1,6 +1,6 @@
 import {
   Fira_Code as FontMono,
-  Inter as FontSans,
+  Rosario as FontSans,
   Inter,
 } from "next/font/google";
 

@@ -1,7 +1,7 @@
 "use client";
 
-import { VideoControl } from "@/components/VideoControl";
-import { title } from "@/components/primitives";
+import { VideoControl } from "@/components/statefull/VideoControl";
+import { title } from "@/components/stateless/primitives";
 import { BASEURL_ASSET } from "@/config/env";
 import { WatchService } from "@/services/watch";
 import { Spinner } from "@nextui-org/spinner";

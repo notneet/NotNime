@@ -9,7 +9,28 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "dark-main": "#272727",
+        "dark-foreground-main": "#747474",
+        "dark-primary": "#FF652F",
+        "dark-secondary": "#FFE400",
+        "light-main": "#F5F5F5",
+        "light-foreground-main": "#333333",
+        "light-primary": "#14A76C",
+        "light-secondary": "#6C5014",
+      },
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1rem",
+        lg: "3.125rem",
+        xl: "3.125rem",
+        "2xl": "3.125rem",
+      },
+    },
   },
   darkMode: "class",
   plugins: [

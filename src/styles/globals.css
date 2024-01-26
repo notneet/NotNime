@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container-wrapper{
+    @apply px-2 sm:px-8
+}

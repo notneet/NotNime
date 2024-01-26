@@ -1,14 +1,13 @@
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/components/statefull/navbar";
+import { Footer } from "@/components/stateless/footer";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
 import { ReduxProviders } from "@/redux/providers";
-import { Link } from "@nextui-org/link";
 import { QueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import { NextUIProviders, QueryProviders } from "./providers";
-
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -43,23 +42,11 @@ export default function RootLayout({
         >
           <ReduxProviders>
             <QueryProviders>
-              <div className="relative flex flex-col h-screen">
+              <div className="relative flex flex-col min-h-screen">
                 <Navbar />
-                <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
-                  {children}
-                </main>
-                <footer className="w-full flex items-center justify-center py-3">
-                  <Link
-                    isExternal
-                    className="flex items-center gap-1 text-current"
-                    href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-                    title="NextJS Homepage"
-                  >
-                    <span className="text-default-600">Powered by</span>
-                    <p className="text-primary">NextJS</p>
-                  </Link>
-                </footer>
+                <main className="container mx-auto flex-grow">{children}</main>
               </div>
+              <Footer />
             </QueryProviders>
           </ReduxProviders>
         </NextUIProviders>

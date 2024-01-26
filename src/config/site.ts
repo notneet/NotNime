@@ -5,20 +5,12 @@ export const siteConfig = {
   description: "Make beautiful websites regardless of your design experience.",
   navItems: [
     {
-      label: "Home",
-      href: "/",
-    },
-    {
       label: "List Anime",
       href: "/animes",
     },
     {
       label: "Ongoing Anime",
       href: "/ongoing-animes",
-    },
-    {
-      label: "About",
-      href: "/about",
     },
   ],
   navMenuItems: [
@@ -29,14 +21,6 @@ export const siteConfig = {
     {
       label: "Ongoing Anime",
       href: "/ongoing-animes",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
     },
   ],
   links: {

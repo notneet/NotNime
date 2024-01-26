@@ -1,6 +1,6 @@
 "use client";
 
-import { title } from "@/components/primitives";
+import { title } from "@/components/stateless/primitives";
 import { WatchService } from "@/services/watch";
 import { DATE_FORMAT } from "@/types";
 import { Button } from "@nextui-org/button";
