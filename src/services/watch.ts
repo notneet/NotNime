@@ -5,9 +5,13 @@ import { QueryOptions } from "@tanstack/react-query";
 export type PaginationItem = {
   media_id: number;
   page: number;
+  take: number;
   title: string;
+  sortBy: string;
   searchBy: string;
+  order: "ASC" | "DESC";
   search: string;
+  random: boolean;
 };
 
 export namespace WatchService {
@@ -18,10 +22,13 @@ export namespace WatchService {
       params: {
         media_id: searchItem?.media_id || 1,
         title: searchItem?.title,
+        sortBy: searchItem?.sortBy,
         searchBy: searchItem?.searchBy,
         search: searchItem?.search,
+        order: searchItem?.order,
         page: searchItem?.page,
-        take: 50,
+        take: searchItem?.take || 50,
+        random: searchItem?.random,
       },
     });
 

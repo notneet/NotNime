@@ -42,7 +42,7 @@ export default function RootLayout({
         >
           <ReduxProviders>
             <QueryProviders>
-              <div className="relative flex flex-col min-h-screen">
+              <div className="flex flex-col min-h-screen">
                 <Navbar />
                 <main className="container mx-auto flex-grow">{children}</main>
               </div>

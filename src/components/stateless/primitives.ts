@@ -40,6 +40,7 @@ export const subtitle = tv({
       brown: "dark:text-dark-secondary text-light-secondary",
     },
     size: {
+      card: "text-lg md:text-lg lg:text-xl xl:text-xl",
       sm: "text-sm leading-4",
       md: "text-sm leading-4",
       lg: "text-sm leading-4",

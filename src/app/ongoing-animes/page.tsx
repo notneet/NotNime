@@ -1,14 +1,12 @@
 "use client";
 
-import { title } from "@/components/stateless/primitives";
+import { CardList } from "@/components/stateless/CardList";
+import { TitleTop } from "@/components/stateless/Title";
 import { selectData } from "@/redux/worker/media.worker";
 import { WatchService } from "@/services/watch";
 import { Input } from "@nextui-org/input";
-import { Link } from "@nextui-org/link";
 import { Pagination } from "@nextui-org/pagination";
-import { Spinner } from "@nextui-org/spinner";
 import { useQuery } from "@tanstack/react-query";
-import clsx from "clsx";
 import { ChangeEvent, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -47,28 +45,31 @@ export default function OngoingAnimesPage() {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className={clsx(title(), "pb-6")}>Ongoing Anime</h1>
-      <Input type="search" label="Search Title" onChange={handelSearchTitle} />
-      {!isPending ? (
-        <ul>
-          {animes?.data?.map((it, i) => (
-            <li key={i}>
-              <Link href={it?.object_id}>{it.title_en}</Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <span>
-          <Spinner />
-        </span>
-      )}
+    <div>
+      <TitleTop name="Willing to Wait?" caption="Avoid spoilers" />
+
+      <Input
+        placeholder="Search title"
+        radius="full"
+        className="pt-6 max-w-72"
+        onChange={handelSearchTitle}
+      />
+
+      <CardList
+        title="Anime Ongoing"
+        datas={animes}
+        isPending={isPending}
+        urlFullPage="ongoing-animes"
+        useNavigateButton={false}
+      />
+
       <Pagination
         key="md"
         total={animes?.meta?.pageCount!}
         initialPage={1}
         size="md"
-        className="pt-5"
+        radius="full"
+        className="pt-5 flex items-center justify-center"
         showControls
         disableAnimation
         hidden={!animes?.meta?.itemCount}

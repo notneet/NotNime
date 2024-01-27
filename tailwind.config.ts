@@ -47,6 +47,9 @@ const config: Config = {
             secondary: {
               DEFAULT: "#FFE400",
             },
+            overlay: "#272727",
+            divider: "#333333",
+            content1: "#272727",
           },
         },
         light: {
@@ -60,6 +63,9 @@ const config: Config = {
             secondary: {
               DEFAULT: "#6C5014",
             },
+            overlay: "#F5F5F5",
+            divider: "#747474",
+            content1: "#F5F5F5",
           },
         },
       },
