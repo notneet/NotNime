@@ -125,8 +125,9 @@ export default function DetailAnimePage({
         {/* List Episode */}
         <ScrollShadow className="max-w-80 max-h-48 mt-5" hideScrollBar>
           <span className="flex flex-wrap  gap-1.5">
-            {numEpisode?.map((it) => (
+            {numEpisode?.map((it, i) => (
               <Button
+                key={i}
                 href={`${anime?.object_id}/${it}`}
                 as={Link}
                 radius="full"
