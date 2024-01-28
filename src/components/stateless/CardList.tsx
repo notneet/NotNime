@@ -11,7 +11,7 @@ export interface CardListProps {
   title: string;
   isPending: boolean;
   datas: IWatches | undefined;
-  urlFullPage: string;
+  urlFullPage?: string;
   useNavigateButton?: boolean;
 }
 
@@ -35,7 +35,7 @@ export const CardList: FC<CardListProps> = ({
               content={anime?.title_en}
               color="foreground"
             >
-              <Link href={anime?.object_id}>
+              <Link href={`/${anime?.object_id}`}>
                 <Image
                   src={anime?.cover_url}
                   alt={anime?.title_en}

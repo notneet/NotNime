@@ -93,12 +93,12 @@ export default function DetailAnimePage({
   if (isPending) return <Spinner />;
 
   return (
-    <div className="flex gap-10 justify-center">
-      <aside className="w-1/6 flex flex-col gap-3">
+    <div className="flex flex-col lg:flex-row gap-10 justify-center">
+      <aside className="w-full lg:w-1/6 flex flex-col gap-3 items-center">
         <Image
           src={anime?.cover_url}
           alt={anime?.title_en}
-          className="h-80 w-64"
+          className="h-80 lg:w-64 w-56 mx-auto"
         />
 
         <Button
@@ -107,6 +107,7 @@ export default function DetailAnimePage({
           radius="full"
           color="primary"
           variant="solid"
+          className="w-full"
         >
           Download Batch
         </Button>
@@ -119,7 +120,7 @@ export default function DetailAnimePage({
           ))}
         </span>
       </aside>
-      <aside className="w-5/6">
+      <aside className="w-full lg:w-5/6">
         <h2 className={clsx(title({ size: "card" }))}>{anime?.title_en}</h2>
 
         {/* List Episode */}

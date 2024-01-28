@@ -44,7 +44,9 @@ export default function RootLayout({
             <QueryProviders>
               <div className="flex flex-col min-h-screen">
                 <Navbar />
-                <main className="container mx-auto flex-grow">{children}</main>
+                <main className="container mx-auto flex-grow overflow-hidden">
+                  {children}
+                </main>
               </div>
               <Footer />
             </QueryProviders>

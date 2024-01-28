@@ -1,5 +1,6 @@
+import { BASEURL_ASSET } from "@/config/env";
 import { siteConfig } from "@/config/site";
-import { Link } from "@nextui-org/react";
+import { Image, Link } from "@nextui-org/react";
 import { MonitorMobileIcon } from "@nextui-org/shared-icons";
 import { DateTime } from "luxon";
 import { FC } from "react";
@@ -19,8 +20,14 @@ import { FC } from "react";
 
 export const Footer: FC = () => {
   return (
-    <footer className="dark:bg-light-foreground-main bg-dark-foreground-main/10 py-8 px-5">
-      <h6 className="font-bold text-lg dark:text-light-main">NotNime</h6>
+    <footer className="dark:bg-light-foreground-main bg-dark-foreground-main/10 pt-4 pb-8 px-5">
+      <div className="flex items-end">
+        <h6 className="font-bold text-lg dark:text-light-main">NotNime</h6>
+        <Image
+          src={`${BASEURL_ASSET}/anime/gif/megu.gif`}
+          className="w-16 h-16"
+        />
+      </div>
       <span className="flex flex-row gap-1 text-xs dark:text-light-main">
         <time>&#169;{DateTime.now().toFormat("yyyy")}</time>
         <p> | </p>
