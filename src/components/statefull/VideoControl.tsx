@@ -65,7 +65,7 @@ export const VideoControl: FC<VideoControlProps> = ({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [playing]);
+  }, [playing, onOpen]);
 
   /**
    * React Player

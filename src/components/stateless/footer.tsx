@@ -25,6 +25,7 @@ export const Footer: FC = () => {
         <h6 className="font-bold text-lg dark:text-light-main">NotNime</h6>
         <Image
           src={`${BASEURL_ASSET}/anime/gif/megu.gif`}
+          alt="megu.gif"
           className="w-16 h-16"
         />
       </div>
