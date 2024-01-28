@@ -1,6 +1,6 @@
 "use client";
 
-import { title } from "@/components/primitives";
+import { title } from "@/components/stateless/primitives";
 import { Button } from "@nextui-org/button";
 import clsx from "clsx";
 import { useEffect } from "react";
