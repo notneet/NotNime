@@ -38,7 +38,11 @@ export default function RootLayout({
         )}
       >
         <NextUIProviders
-          themeProps={{ attribute: "class", defaultTheme: "dark" }}
+          themeProps={{
+            attribute: "class",
+            defaultTheme: "dark",
+            children,
+          }}
         >
           <ReduxProviders>
             <QueryProviders>
