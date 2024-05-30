@@ -24,6 +24,7 @@ export namespace WatchDummyData {
         producers: "",
         description: "",
         cover_url: "",
+        streams: [],
       },
     };
   };
