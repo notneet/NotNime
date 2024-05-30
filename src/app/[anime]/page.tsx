@@ -141,6 +141,40 @@ export default function DetailAnimePage({
           </span>
         </ScrollShadow>
 
+        {/* List Batch */}
+        {anime?.streams && anime?.streams?.length > 0 && (
+          <>
+            <h3 className={clsx(subtitle({ size: "card" }), "py-5")}>
+              List Batch
+            </h3>
+            <ul>
+              {anime?.streams?.map((stream, i) => (
+                <li key={i} className="flex items-center gap-2 my-2">
+                  <ul className="flex items-center gap-2">
+                    {Object.entries(stream?.providers)?.map(
+                      ([providerName, mirror], j) => (
+                        <li key={j}>
+                          <Link
+                            href={mirror}
+                            as={Link}
+                            className="leading-3"
+                            target="_blank"
+                          >
+                            {providerName}
+                          </Link>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                  <span className="text-sm font-semibold">
+                    {stream?.quality}p
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
         {/* Description */}
         <h3 className={clsx(subtitle({ size: "card" }), "py-5")}>
           Description

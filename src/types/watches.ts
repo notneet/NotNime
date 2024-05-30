@@ -20,6 +20,24 @@ export interface WatchesData {
   producers: string;
   description: string;
   cover_url: string;
+  streams: IWatchStream[];
+}
+
+export interface IWatchStream {
+  id: number;
+  watch_id: string;
+  media_id: number;
+  object_id: string;
+  author: null;
+  published: Date;
+  published_ts: number;
+  name: string;
+  url: string;
+  providers: JSON;
+  quality: string;
+  file_size: string;
+  num_episode: number;
+  type: string;
 }
 
 export interface IWatches {
