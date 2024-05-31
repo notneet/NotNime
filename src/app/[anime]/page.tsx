@@ -102,14 +102,15 @@ export default function DetailAnimePage({
         />
 
         <Button
-          href="https://github.com/notneet/notnime"
+          href={anime?.url}
+          target="_blank"
           as={Link}
           radius="full"
           color="primary"
           variant="solid"
           className="w-full"
         >
-          Download Batch
+          Goto Original Page
         </Button>
 
         <span className="flex flex-wrap gap-2 w-full">
