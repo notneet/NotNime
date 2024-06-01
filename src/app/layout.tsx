@@ -41,7 +41,6 @@ export default function RootLayout({
           themeProps={{
             attribute: "class",
             defaultTheme: "dark",
-            children,
           }}
         >
           <ReduxProviders>
