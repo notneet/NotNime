@@ -151,7 +151,7 @@ export default function DetailAnimePage({
             <ul>
               {anime?.streams?.map((stream, i) => (
                 <li key={i} className="flex items-center gap-2 my-2">
-                  <ul className="flex flex-col items-center gap-2">
+                  <ul className="flex flex-col items-start gap-2">
                     {stream?.providers?.length > 0 &&
                       stream?.providers?.map((provider, i) => (
                         <li key={i}>
