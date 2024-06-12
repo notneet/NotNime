@@ -151,25 +151,29 @@ export default function DetailAnimePage({
             <ul>
               {anime?.streams?.map((stream, i) => (
                 <li key={i} className="flex items-center gap-2 my-2">
-                  <ul className="flex items-center gap-2">
-                    {Object.entries(stream?.providers)?.map(
-                      ([providerName, mirror], j) => (
-                        <li key={j}>
-                          <Link
-                            href={mirror}
-                            as={Link}
-                            className="leading-3"
-                            target="_blank"
-                          >
-                            {providerName}
-                          </Link>
+                  <ul className="flex flex-col items-center gap-2">
+                    {stream?.providers?.length > 0 &&
+                      stream?.providers?.map((provider, i) => (
+                        <li key={i}>
+                          {Object.entries(provider?.items)?.map(
+                            ([providerName, mirror], j) => (
+                              <Link
+                                key={j}
+                                href={mirror}
+                                as={Link}
+                                className="leading-3 mx-1.5"
+                                target="_blank"
+                              >
+                                {providerName}
+                              </Link>
+                            )
+                          )}
+                          <span className="text-sm font-semibold">
+                            {provider?.resolution}
+                          </span>
                         </li>
-                      )
-                    )}
+                      ))}
                   </ul>
-                  <span className="text-sm font-semibold">
-                    {stream?.quality}p
-                  </span>
                 </li>
               ))}
             </ul>

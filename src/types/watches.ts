@@ -33,11 +33,16 @@ export interface IWatchStream {
   published_ts: number;
   name: string;
   url: string;
-  providers: JSON;
+  providers: IWatchesProvider[];
   quality: string;
   file_size: string;
   num_episode: number;
   type: string;
+}
+
+export interface IWatchesProvider {
+  items: JSON;
+  resolution: string;
 }
 
 export interface IWatches {
